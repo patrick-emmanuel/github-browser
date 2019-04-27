@@ -1,10 +1,10 @@
 import React from "react";
-import UserRepo from "./components/UserRepo";
+import Repos from "./components/repos";
 
 function App() {
   return (
     <div className="app">
-      <UserRepo />
+      <Repos />
     </div>
   );
 }

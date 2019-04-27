@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import BASE_URL from '../constants';
 
 const UserBranches = ({ repoName, userName }) => {
   const [loading, setLoading] = useState(false);
@@ -11,7 +12,7 @@ const UserBranches = ({ repoName, userName }) => {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          `https://api.github.com/repos/${userName}/${repoName}/branches`
+          `${BASE_URL}/repos/${userName}/${repoName}/branches`
         );
         setBranches(data);
       } catch (error) {

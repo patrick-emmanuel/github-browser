@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import UserBranches from "./UserBranches";
 import Accordion from "./Accordion";
+import BASE_URL from '../constants';
 
 const UserRepo = () => {
   const [name, setName] = useState("");
@@ -23,7 +24,7 @@ const UserRepo = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `https://api.github.com/users/${name}/repos`
+        `${BASE_URL}/users/${name}/repos`
       );
       setRepos(data);
     } catch (error) {

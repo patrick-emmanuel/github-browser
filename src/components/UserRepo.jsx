@@ -6,13 +6,14 @@ import Accordion from "./Accordion";
 const UserRepo = () => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [repos, setRepos] = useState([]);
 
   const handleSubmit = e => {
     e.preventDefault();
     getRepos();
   };
-  
+
   const handleNameChange = e => {
     e.preventDefault();
     setName(e.target.value);
@@ -26,31 +27,34 @@ const UserRepo = () => {
       );
       setRepos(data);
     } catch (error) {
-      console.log(error);
+      setError(error.message);
       setLoading(false);
     }
     setLoading(false);
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <input value={name} onChange={handleNameChange} />
+    <section className="repos">
+      <form className="search" onSubmit={handleSubmit}>
+        <div className="input-group">
+          <input type="text" value={name} onChange={handleNameChange} />
+        </div>
         <button>Search</button>
       </form>
-      <div>
-        {loading ? "Loading..." : ""}
-        {repos ? (
+      <div className="repo-results">
+        {loading ? (
+          "Loading..."
+        ) : !loading && !error && repos.length > 0 ? (
           <Accordion>
             {repos.map(repo => (
-              <div id={repo.name} label={repo.name}>
+              <div key={repo.name} label={repo.name}>
                 <UserBranches repoName={repo.name} userName={name} />
               </div>
             ))}
           </Accordion>
-        ) : (
-          "No repos"
-        )}
+        ) : error ? (
+          <p>{error}</p>
+        ) : null}
       </div>
     </section>
   );

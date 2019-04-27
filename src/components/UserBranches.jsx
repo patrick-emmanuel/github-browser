@@ -4,6 +4,7 @@ import axios from "axios";
 const UserBranches = ({ repoName, userName }) => {
   const [loading, setLoading] = useState(false);
   const [branches, setBranches] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const getBranches = async () => {
@@ -14,7 +15,7 @@ const UserBranches = ({ repoName, userName }) => {
         );
         setBranches(data);
       } catch (error) {
-        console.log(error);
+        setError(error.message);
         setLoading(false);
       }
       setLoading(false);
@@ -25,10 +26,14 @@ const UserBranches = ({ repoName, userName }) => {
   return (
     <section>
       <div>
-        {loading ? "Loading..." : ""}
-        {branches
-          ? branches.map(branch => <div id={branch.name}>{branch.name}</div>)
-          : "No branches"}
+        <h4 className="branches-header">{`${repoName} branches`}</h4>
+        {loading ? (
+          "Loading..."
+        ) : !loading && !error && branches ? (
+          branches.map(branch => <div key={branch.name}>{branch.name}</div>)
+        ) : error ? (
+          <p>error</p>
+        ) : null}
       </div>
     </section>
   );

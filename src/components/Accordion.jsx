@@ -13,9 +13,10 @@ const Accordion = ({ children }) => {
   };
 
   return (
-    <div style={{ border: "2px solid #008f68" }}>
+    <div className="accordion">
       {children.map(child => (
         <AccordionSection
+          key={child.props.label}
           isOpen={!!openSections[child.props.label]}
           label={child.props.label}
           onSectionClick={onClick}

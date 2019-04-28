@@ -75,6 +75,12 @@ button {
   padding: 1rem 0;
 }
 
+.accordion-section:hover{
+  background: rgb(255, 255, 255);
+  color: black;
+
+}
+
 .accordion-section-content {
   padding: 1rem 3rem;
 }

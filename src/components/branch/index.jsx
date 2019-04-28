@@ -31,18 +31,13 @@ const UserBranches = ({ repoName, userName }) => {
   if (loading) {
     render = <Loader />;
   } else if (!loading && !error && branches.length > 0) {
-    render = <BranchSearchResults branches={branches} />;
+    render = <BranchSearchResults branches={branches} repoName={repoName} />;
   } else if (error) {
     render = error;
   } else {
     render = null;
   }
-  return (
-    <section>
-      <h4 className="branches-header">{`${repoName} branches`}</h4>
-      {render}
-    </section>
-  );
+  return <section>{render}</section>;
 };
 
 UserBranches.propTypes = {

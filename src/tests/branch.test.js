@@ -18,7 +18,7 @@ describe("Branches", () => {
       <Repos />
     );
     const inputElement = getByLabelText("username");
-    const button = getByText("Search");
+    const button = getByText("Find User");
     fireEvent.change(inputElement, { target: { value: "the-bionic" } });
     fireEvent.click(button);
     const accordionSections = await waitForElement(() =>

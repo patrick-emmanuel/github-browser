@@ -14,7 +14,9 @@ const RepoSearchBar = ({ handleSubmit, name, handleNameChange }) => (
         onChange={handleNameChange}
       />
     </div>
-    <button>Search</button>
+    <button>
+      Find User <i className="fas fa-search" />
+    </button>
   </form>
 );
 

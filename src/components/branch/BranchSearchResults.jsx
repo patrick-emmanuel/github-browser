@@ -10,9 +10,11 @@ const BranchSearchResults = ({ branches, repoName }) => {
         className="branches-header"
         data-testid="branches-header"
       >{`${repoName} branches`}</h4>
-      {branches.map(branch => (
-        <div key={branch.name}>{branch.name}</div>
-      ))}
+      <ul>
+        {branches.map(branch => (
+          <li key={branch.name}>{branch.name}</li>
+        ))}
+      </ul>
     </animated.div>
   );
 };

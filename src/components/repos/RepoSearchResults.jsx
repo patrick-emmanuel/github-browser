@@ -8,6 +8,7 @@ const RepoSearchResults = ({ repos, name }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
   return (
     <animated.div style={props}>
+      <h2>{name} repositories</h2>
       <Accordion>
         {repos.map(repo => (
           <div key={repo.name} label={repo.name}>

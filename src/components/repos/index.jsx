@@ -4,6 +4,7 @@ import RepoSearchBar from "./RepoSearchBar";
 import { BASE_URL } from "../../constants";
 import RepoSearchResults from "./RepoSearchResults";
 import Loader from "../Loader";
+import Logo from "./Logo";
 
 const UserRepo = () => {
   const [name, setName] = useState("");
@@ -45,6 +46,7 @@ const UserRepo = () => {
   }
   return (
     <section className="repos">
+      <Logo />
       <RepoSearchBar
         name={name}
         handleNameChange={handleNameChange}

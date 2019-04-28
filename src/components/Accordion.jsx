@@ -13,7 +13,7 @@ const Accordion = ({ children }) => {
   };
 
   return (
-    <div className="accordion">
+    <ul className="accordion">
       {children.map(child => (
         <AccordionSection
           key={child.props.label}
@@ -24,7 +24,7 @@ const Accordion = ({ children }) => {
           {child.props.children}
         </AccordionSection>
       ))}
-    </div>
+    </ul>
   );
 };
 

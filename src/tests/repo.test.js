@@ -4,7 +4,7 @@ import Repos from "../components/repos";
 import "react-testing-library/cleanup-after-each";
 import "jest-dom/extend-expect";
 
-afterEach(cleanup)
+afterEach(cleanup);
 
 describe("Repos", () => {
   describe("Search Form", () => {
@@ -20,7 +20,7 @@ describe("Repos", () => {
       const { getByTestId, getByText } = render(<Repos />);
 
       const formElement = getByTestId("search-form");
-      const button = getByText("Search");
+      const button = getByText("Find User");
 
       expect(formElement).toContainElement(button);
     });
@@ -61,6 +61,15 @@ describe("Repos", () => {
       const element = getByLabelText("username");
 
       expect(element).toHaveFocus();
+    });
+  });
+  describe("Logo", () => {
+    it("Should be rendered", () => {
+      const { getByTestId } = render(<Repos />);
+
+      const formElement = getByTestId("logo");
+
+      expect(formElement).not.toBeNull();
     });
   });
 });

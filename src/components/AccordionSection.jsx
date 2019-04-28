@@ -7,20 +7,23 @@ const AccordionSection = ({ children, onSectionClick, label, isOpen }) => {
   };
 
   return (
-    <div>
+    <li>
       <div
         onClick={onClick}
         className="accordion-section"
         data-testid="accordion-section"
       >
-        {label}
+        <div className="repoName">
+          <i className="fas fa-code-branch" />
+          <p>{label}</p>
+        </div>
         <div>
           {!isOpen && <span>&#9650;</span>}
           {isOpen && <span>&#9660;</span>}
         </div>
       </div>
       {isOpen && <div className="accordion-section-content">{children}</div>}
-    </div>
+    </li>
   );
 };
 

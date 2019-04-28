@@ -3,15 +3,18 @@ import puppeteer from "puppeteer";
 let browser;
 let page;
 
+const url = "http://localhost:3000";
 beforeEach(async () => {
-  browser = await puppeteer.launch({ args: ["--no-sandbox"] });
+  browser = await puppeteer.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"]
+  });
   // creates a new page in the opened browser
   page = await browser.newPage();
 });
 
 describe("Repos", () => {
   it("Should fetch repo correctly", async () => {
-    await page.goto("http://localhost:3000");
+    await page.goto(url);
 
     await page.waitForSelector(".repos");
     await page.click(".search>div>input[name=username]");
@@ -26,7 +29,7 @@ describe("Repos", () => {
   });
 
   it("Should show error with incorrect username", async () => {
-    await page.goto("http://localhost:3000");
+    await page.goto(url);
 
     await page.waitForSelector(".repos");
     await page.click(".search>div>input[name=username]");

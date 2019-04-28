@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import RepoSearchBar from "./RepoSearchBar";
-import { BASE_URL} from "../../constants";
+import { BASE_URL } from "../../constants";
 import RepoSearchResults from "./RepoSearchResults";
+import Loader from "../Loader";
 
 const UserRepo = () => {
   const [name, setName] = useState("");
@@ -33,7 +34,7 @@ const UserRepo = () => {
   };
   let render;
   if (loading) {
-    render = "Loading...";
+    render = <Loader />;
   } else if (!loading && !error && repos.length > 0) {
     render = <RepoSearchResults repos={repos} name={name} />;
   } else if (error) {

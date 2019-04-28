@@ -3,6 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { BASE_URL } from "../../constants";
 import BranchSearchResults from "./BranchSearchResults";
+import Loader from "../Loader";
 
 const UserBranches = ({ repoName, userName }) => {
   const [loading, setLoading] = useState(false);
@@ -28,7 +29,7 @@ const UserBranches = ({ repoName, userName }) => {
 
   let render;
   if (loading) {
-    render = "Loading...";
+    render = <Loader />;
   } else if (!loading && !error && branches.length > 0) {
     render = <BranchSearchResults branches={branches} />;
   } else if (error) {
@@ -38,10 +39,8 @@ const UserBranches = ({ repoName, userName }) => {
   }
   return (
     <section>
-      <div>
-        <h4 className="branches-header">{`${repoName} branches`}</h4>
-        {render}
-      </div>
+      <h4 className="branches-header">{`${repoName} branches`}</h4>
+      {render}
     </section>
   );
 };

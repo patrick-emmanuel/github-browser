@@ -6,7 +6,10 @@ const BranchSearchResults = ({ branches, repoName }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
   return (
     <animated.div style={props}>
-      <h4 className="branches-header">{`${repoName} branches`}</h4>
+      <h4
+        className="branches-header"
+        data-testid="branches-header"
+      >{`${repoName} branches`}</h4>
       {branches.map(branch => (
         <div key={branch.name}>{branch.name}</div>
       ))}

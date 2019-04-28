@@ -8,7 +8,11 @@ const AccordionSection = ({ children, onSectionClick, label, isOpen }) => {
 
   return (
     <div>
-      <div onClick={onClick} className="accordion-section">
+      <div
+        onClick={onClick}
+        className="accordion-section"
+        data-testid="accordion-section"
+      >
         {label}
         <div>
           {!isOpen && <span>&#9650;</span>}

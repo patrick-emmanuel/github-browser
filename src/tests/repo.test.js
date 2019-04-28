@@ -1,8 +1,10 @@
 import React from "react";
-import { render } from "react-testing-library";
+import { render, cleanup } from "react-testing-library";
 import Repos from "../components/repos";
 import "react-testing-library/cleanup-after-each";
 import "jest-dom/extend-expect";
+
+afterEach(cleanup)
 
 describe("Repos", () => {
   describe("Search Form", () => {

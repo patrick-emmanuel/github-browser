@@ -4,7 +4,7 @@ let browser;
 let page;
 
 beforeEach(async () => {
-  browser = await puppeteer.launch();
+  browser = await puppeteer.launch({ args: ["--no-sandbox"] });
   // creates a new page in the opened browser
   page = await browser.newPage();
 });

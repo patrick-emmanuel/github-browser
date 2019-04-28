@@ -6,27 +6,22 @@ addons:
   apt:
     packages:
       - libnss3
+
 notifications:
   email: false
-cache:
-  directories:
-    - node_modules
+
 # allow headful tests
 before_install:
   - "sysctl kernel.unprivileged_userns_clone=1"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 cache:
-  yarn: true
   directories:
     - node_modules
 
-cache:
-  directories:
-    - node_modules
 before_script:
   -  npm start &
-  -  sleep 10
+  -  sleep 20
 script:
   - npm run build
   - npm test

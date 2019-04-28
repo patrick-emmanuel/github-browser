@@ -32,13 +32,14 @@ const UserRepo = () => {
     }
     setLoading(false);
   };
+
   let render;
   if (loading) {
     render = <Loader />;
   } else if (!loading && !error && repos.length > 0) {
     render = <RepoSearchResults repos={repos} name={name} />;
   } else if (error) {
-    render = error;
+    render = <div className="error">{error}</div>;
   } else {
     render = null;
   }

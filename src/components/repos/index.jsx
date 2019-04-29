@@ -6,6 +6,7 @@ import { useDebounce } from "../../utils/customHooks";
 import RepoSearchResults from "./RepoSearchResults";
 import Loader from "../Loader";
 import Logo from "./Logo";
+import Error from "../Error";
 
 const UserRepo = () => {
   const [name, setName] = useState("");
@@ -30,10 +31,12 @@ const UserRepo = () => {
         setLoading(true);
         setError("");
         try {
-          const { data } = await axios.get(`${BASE_URL}/users/${debouncedName}/repos`);
+          const { data } = await axios.get(
+            `${BASE_URL}/users/${debouncedName}/repos`
+          );
           setRepos(data);
         } catch (error) {
-          setError(error.message);
+          setError(error);
           setLoading(false);
         }
         setLoading(false);
@@ -48,7 +51,7 @@ const UserRepo = () => {
   } else if (!loading && !error && repos.length > 0) {
     render = <RepoSearchResults repos={repos} name={debouncedName} />;
   } else if (error) {
-    render = <div className="error">{error}</div>;
+    render = <Error error={error} />;
   } else {
     render = null;
   }

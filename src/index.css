@@ -2,7 +2,18 @@
   box-sizing: border-box;
 }
 body {
-  background: #fff;
+  background: #606c88; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #3f4c6b,
+    #606c88
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #3f4c6b,
+    #606c88
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
   margin: 0;
   padding: 0;
   font-family: "Comfortaa", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -115,61 +126,31 @@ button {
 
 .search {
   width: 100%;
-  height: 60px;
+  height: 70px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
-}
-
-@media (min-width: 300px) {
+  margin: 50px 0;
 }
 
 @media (min-width: 575.98px) {
   .search {
-    flex-direction: row;
-    justify-content: space-between;
     margin-bottom: 0;
   }
-}
-@media (min-width: 1000px) {
-  .search {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-@media (min-width: 1920px) {
-}
-
-.search > button {
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  flex: 1;
-  color: #fff;
-  padding: 1.2rem 0;
-  margin: 10px 0;
-  background: #245871;
-  opacity: 0.8;
-  display: block;
-}
-
-@media (min-width: 575.98px) {
-  .search > button {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.search > button:hover {
 }
 
 .input-group {
   height: 100%;
+  width: 100%;
   margin-right: 5px;
-  flex: 2;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.fa-search {
+  position: absolute;
+  right: 17px;
+  color: #ececfe;
 }
 
 .repoName {
@@ -200,11 +181,12 @@ button {
   align-items: center;
   justify-content: space-evenly;
 }
+
 .input-group > input[type="text"] {
   display: block;
   height: 100%;
   width: 100%;
-  padding: 0.375rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
   color: #495057;
@@ -217,9 +199,8 @@ button {
 }
 
 .input-group > input[type="text"]:focus {
-  border-color: rgba(82, 143, 255, 0.19);
-  box-shadow: 0 4px 3px 2px rgba(107, 107, 107, 0.19),
-    0 6px 20px 0 rgba(107, 107, 107, 0.19);
+  border-color: rgba(85, 197, 231, 0.19);
+  box-shadow: 0 0 10px 2px rgba(85, 197, 231, 0.19);
 }
 .fa-star.blue {
   color: #8cdaff;

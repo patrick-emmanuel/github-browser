@@ -9,14 +9,11 @@ const RepoSearchBar = ({ handleSubmit, name, handleNameChange }) => (
         name="username"
         aria-label="username"
         placeholder="Username"
-        autoFocus
         value={name}
         onChange={handleNameChange}
       />
+      <i className="fas fa-search fa-lg" />
     </div>
-    <button>
-      Find User <i className="fas fa-search" />
-    </button>
   </form>
 );
 

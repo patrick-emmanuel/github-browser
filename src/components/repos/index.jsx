@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import RepoSearchBar from "./RepoSearchBar";
 import { BASE_URL } from "../../constants";
+import { useDebounce } from "../../utils/customHooks";
 import RepoSearchResults from "./RepoSearchResults";
 import Loader from "../Loader";
 import Logo from "./Logo";
@@ -12,9 +13,10 @@ const UserRepo = () => {
   const [error, setError] = useState("");
   const [repos, setRepos] = useState([]);
 
+  const debouncedName = useDebounce(name, 1000);
+
   const handleSubmit = e => {
     e.preventDefault();
-    getRepos();
   };
 
   const handleNameChange = e => {
@@ -22,23 +24,29 @@ const UserRepo = () => {
     setName(e.target.value);
   };
 
-  const getRepos = async () => {
-    setLoading(true);
-    try {
-      const { data } = await axios.get(`${BASE_URL}/users/${name}/repos`);
-      setRepos(data);
-    } catch (error) {
-      setError(error.message);
-      setLoading(false);
-    }
-    setLoading(false);
-  };
+  useEffect(() => {
+    const getRepos = async () => {
+      if (debouncedName) {
+        setLoading(true);
+        setError("");
+        try {
+          const { data } = await axios.get(`${BASE_URL}/users/${debouncedName}/repos`);
+          setRepos(data);
+        } catch (error) {
+          setError(error.message);
+          setLoading(false);
+        }
+        setLoading(false);
+      }
+    };
+    getRepos();
+  }, [debouncedName]);
 
   let render;
   if (loading) {
     render = <Loader />;
   } else if (!loading && !error && repos.length > 0) {
-    render = <RepoSearchResults repos={repos} name={name} />;
+    render = <RepoSearchResults repos={repos} name={debouncedName} />;
   } else if (error) {
     render = <div className="error">{error}</div>;
   } else {

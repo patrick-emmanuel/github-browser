@@ -13,6 +13,7 @@ const UserBranches = ({ repoName, userName }) => {
   useEffect(() => {
     const getBranches = async () => {
       setLoading(true);
+      setError("");
       try {
         const { data } = await axios.get(
           `${BASE_URL}/repos/${userName}/${repoName}/branches`

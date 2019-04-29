@@ -79,14 +79,15 @@ button {
 
 .accordion {
   padding: 1rem;
-  background: #eaeaea;
+  background: #245871;
+  color: white;
 }
 @media (min-width: 575.98px) {
   .accordion {
     padding: 2rem;
     border: 5px solid #ffffff;
     border-radius: 5px;
-    box-shadow: -4px 5px 20px -7px rgba(107, 107, 107, 0.3);
+    box-shadow: -4px 5px 20px -7px rgba(107, 107, 107, 0.7);
   }
 }
 .accordion-section {
@@ -149,7 +150,7 @@ button {
   color: #fff;
   padding: 1.2rem 0;
   margin: 10px 0;
-  background: #8cdaff;
+  background: #245871;
   opacity: 0.8;
   display: block;
 }
@@ -224,7 +225,7 @@ button {
   color: #8cdaff;
 }
 .loader {
-  color: #8cdaff;
+  color: #245871;
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;

@@ -20,13 +20,22 @@ body {
 
   margin: 0;
   padding: 0;
-  font-family: "Comfortaa", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Comfortaa", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+@media (min-width: 575.98px) {
+  ul {
+    list-style-type: disc;
+    padding-inline-start: 20px;
+  }
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -84,19 +93,28 @@ button {
 }
 
 .accordion {
-  padding: 2rem;
-  border-radius: 5px;
-  border: 3px solid #efefef;
-  box-shadow: -8px 10px 32px -16px rgba(107, 107, 107, 1);
+  padding: 1rem;
 }
-
+@media (min-width: 575.98px) {
+  .accordion {
+    padding: 2rem;
+    border: 3px solid #efefef;
+    border-radius: 5px;
+    box-shadow: -4px 5px 32px -7px rgba(107, 107, 107, 1);
+  }
+}
 .accordion-section {
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem;
+  padding: 0.3rem 0;
   border-radius: 5px;
+}
+
+@media (min-width: 575.98px) {
+  .accordion-section {
+    padding: 0.3rem 1rem;
+  }
 }
 
 .accordion-section:hover {
@@ -113,6 +131,7 @@ button {
   height: 60px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 }
 
 @media (min-width: 300px) {
@@ -122,6 +141,7 @@ button {
   .search {
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 0;
   }
 }
 @media (min-width: 1000px) {
@@ -135,19 +155,28 @@ button {
 }
 
 .search > button {
-  height: 100%;
-  padding: 0;
   font-size: 1.1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   flex: 1;
   color: #fff;
+  padding: 1.2rem 0;
+  margin: 10px 0;
   background: #8cdaff;
   opacity: 0.8;
+  display: block;
 }
+
+@media (min-width: 575.98px) {
+  .search > button {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .search > button:hover {
-  
 }
 
 .input-group {
@@ -155,9 +184,34 @@ button {
   margin-right: 5px;
   flex: 2;
 }
-.repoName > p{
+
+.repoName {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.repoName > p {
   display: inline-block;
-  padding: .7rem .7rem;
+  padding: 0.4rem 0.4rem;
+}
+
+.repoInfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.repoType {
+  padding-left: 0.8rem;
+}
+.repoStars {
+  padding-right: 0.4rem;
+}
+.repoDescription {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .input-group > input[type="text"] {
   display: block;
@@ -179,7 +233,9 @@ button {
   box-shadow: 0 4px 3px 2px rgba(107, 107, 107, 0.19),
     0 6px 20px 0 rgba(107, 107, 107, 0.19);
 }
-
+.fa-star.blue {
+  color: #8cdaff;
+}
 .loader {
   color: #8cdaff;
   font-size: 90px;

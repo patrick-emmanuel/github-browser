@@ -13,13 +13,13 @@ const Accordion = ({ children }) => {
   };
 
   return (
-    <ul className="accordion">
+    <ul>
       {children.map(child => (
         <AccordionSection
           key={child.props.label}
           isOpen={!!openSections[child.props.label]}
-          label={child.props.label}
           onSectionClick={onClick}
+          {...child.props}
         >
           {child.props.children}
         </AccordionSection>

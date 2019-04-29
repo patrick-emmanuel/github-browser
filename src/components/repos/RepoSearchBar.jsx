@@ -8,7 +8,7 @@ const RepoSearchBar = ({ handleSubmit, name, handleNameChange }) => (
         type="text"
         name="username"
         aria-label="username"
-        placeholder="Username"
+        placeholder="Find a user on Github"
         value={name}
         onChange={handleNameChange}
       />

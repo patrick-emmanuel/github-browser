@@ -16,14 +16,6 @@ describe("Repos", () => {
 
       expect(formElement).toContainElement(inputElement);
     });
-    it("Should contain a button element", () => {
-      const { getByTestId, getByText } = render(<Repos />);
-
-      const formElement = getByTestId("search-form");
-      const button = getByText("Find User");
-
-      expect(formElement).toContainElement(button);
-    });
     it("Should be visible", () => {
       const { getByTestId } = render(<Repos />);
 
@@ -55,12 +47,12 @@ describe("Repos", () => {
 
       expect(element).toHaveAttribute("type", "text");
     });
-    it("Should have focus", () => {
+    it("Should not have focus focus", () => {
       const { getByLabelText } = render(<Repos />);
 
       const element = getByLabelText("username");
 
-      expect(element).toHaveFocus();
+      expect(element).not.toHaveFocus();
     });
   });
   describe("Logo", () => {

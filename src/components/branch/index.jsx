@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
+import { useSpring, animated } from "react-spring";
 import { BASE_URL } from "../../constants";
 import BranchSearchResults from "./BranchSearchResults";
-import Loader from "../Loader";
 
 const UserBranches = ({ repoName, userName }) => {
   const [loading, setLoading] = useState(false);
   const [branches, setBranches] = useState([]);
   const [error, setError] = useState("");
+  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
 
   useEffect(() => {
     const getBranches = async () => {
@@ -30,7 +31,7 @@ const UserBranches = ({ repoName, userName }) => {
 
   let render;
   if (loading) {
-    render = <Loader />;
+    render = <p>Loading</p>;
   } else if (!loading && !error && branches.length > 0) {
     render = <BranchSearchResults branches={branches} repoName={repoName} />;
   } else if (error) {
@@ -38,7 +39,7 @@ const UserBranches = ({ repoName, userName }) => {
   } else {
     render = null;
   }
-  return <section>{render}</section>;
+  return <animated.section style={props}>{render}</animated.section>;
 };
 
 UserBranches.propTypes = {

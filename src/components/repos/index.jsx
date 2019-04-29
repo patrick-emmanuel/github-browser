@@ -47,7 +47,7 @@ const UserRepo = () => {
 
   let render;
   if (loading) {
-    render = <Loader />;
+    render = <Loader className="loader-lg"/>;
   } else if (!loading && !error && repos.length > 0) {
     render = <RepoSearchResults repos={repos} name={debouncedName} />;
   } else if (error) {

@@ -14,13 +14,11 @@ afterEach(cleanup);
 
 describe("Branches", () => {
   it("Should render branches when a repo is clicked on", async () => {
-    const { getAllByTestId, getByTestId, getByText, getByLabelText } = render(
+    const { getAllByTestId, getByTestId, getByLabelText } = render(
       <Repos />
     );
     const inputElement = getByLabelText("username");
-    const button = getByText("Find User");
     fireEvent.change(inputElement, { target: { value: "the-bionic" } });
-    fireEvent.click(button);
     const accordionSections = await waitForElement(() =>
       getAllByTestId("accordion-section")
     );

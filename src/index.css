@@ -86,7 +86,7 @@ button {
     padding: 2rem;
     border: 5px solid #ffffff;
     border-radius: 5px;
-    box-shadow: -4px 5px 20px -7px rgba(107, 107, 107, 1);
+    box-shadow: -4px 5px 20px -7px rgba(107, 107, 107, 0.3);
   }
 }
 .accordion-section {

@@ -15,22 +15,28 @@ export const useDebounce = (value, delay) => {
   return debouncedValue;
 };
 
+const actions = {
+  FETCH_INIT: "FETCH_INIT",
+  FETCH_SUCCESS: "FETCH_SUCCESS",
+  FETCH_FAILURE: "FETCH_FAILURE"
+};
+
 const dataFetchReducer = (state, action) => {
   switch (action.type) {
-    case "FETCH_INIT":
+    case actions.FETCH_INIT:
       return {
         ...state,
         isLoading: true,
         error: ""
       };
-    case "FETCH_SUCCESS":
+    case actions.FETCH_SUCCESS:
       return {
         ...state,
         isLoading: false,
         error: "",
         data: action.payload
       };
-    case "FETCH_FAILURE":
+    case actions.FETCH_FAILURE:
       return {
         ...state,
         isLoading: false,
@@ -53,12 +59,12 @@ export const useDataApi = (initialUrl, initialData) => {
   useEffect(() => {
     const fetchData = async () => {
       if (url) {
-        dispatch({ type: "FETCH_INIT" });
+        dispatch({ type: actions.FETCH_INIT });
         try {
           const result = await axios(url);
-          dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+          dispatch({ type: actions.FETCH_SUCCESS, payload: result.data });
         } catch (error) {
-          dispatch({ type: "FETCH_FAILURE", payload: error.message });
+          dispatch({ type: actions.FETCH_FAILURE, payload: error.message });
         }
       }
     };

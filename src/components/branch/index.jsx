@@ -1,45 +1,27 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { useSpring, animated } from "react-spring";
 import { BASE_URL } from "../../constants";
 import BranchSearchResults from "./BranchSearchResults";
+import { useDataApi } from "../../utils/customHooks";
 
-const UserBranches = ({ repoName, userName }) => {
-  const [loading, setLoading] = useState(false);
-  const [branches, setBranches] = useState([]);
-  const [error, setError] = useState("");
-  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+const UserBranches = ({ repoName, username }) => {
+  const { isLoading, error, data, fetchData } = useDataApi("", null);
 
   useEffect(() => {
-    const getBranches = async () => {
-      setLoading(true);
-      setError("");
-      try {
-        const { data } = await axios.get(
-          `${BASE_URL}/repos/${userName}/${repoName}/branches`
-        );
-        setBranches(data);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-      setLoading(false);
-    };
-    getBranches();
-  }, [repoName, userName]);
+    fetchData(`${BASE_URL}/repos/${username}/${repoName}/branches`)
+  }, [username, repoName]);
 
   let render;
-  if (loading) {
-    render = <p>Loading</p>;
-  } else if (!loading && !error && branches.length > 0) {
-    render = <BranchSearchResults branches={branches} repoName={repoName} />;
+  if (isLoading) {
+    render = <p>Loading...</p>;
+  } else if (!isLoading && !error && data) {
+    render = <BranchSearchResults branches={data} repoName={repoName} />;
   } else if (error) {
     render = error;
   } else {
     render = null;
   }
-  return <animated.section style={props}>{render}</animated.section>;
+  return <section>{render}</section>;
 };
 
 UserBranches.propTypes = {

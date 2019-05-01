@@ -9,7 +9,7 @@ const AccordionSection = ({
   privateRepo,
   isOpen
 }) => {
-  
+
   const onClick = () => {
     onSectionClick(label);
   };

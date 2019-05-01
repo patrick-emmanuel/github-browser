@@ -9,9 +9,9 @@ const BranchSearchResults = ({ branches, repoName }) => {
         {`${repoName} branches`}
       </h4>
       <ul>
-        {branches.map(branch => (
-          <li key={branch.name}>{branch.name}</li>
-        ))}
+        {branches
+          ? branches.map(branch => <li key={branch.name}>{branch.name}</li>)
+          : "No branches available."}
       </ul>
     </div>
   );

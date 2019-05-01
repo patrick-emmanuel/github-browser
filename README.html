@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>GitHub Browser</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <p>#GitHub Browser</p>
+<h2 id="getting-started">Getting started</h2>
+<pre><code><div>    $ git clone https://github.com/the-bionic/github-browser.git
+    $ cd github-browser
+    $ npm install
+    $ npm start
+</div></code></pre>
+<h2 id="design-decisions">Design Decisions</h2>
+<h3 id="no-router">No Router</h3>
+<p>I did not use a router to build the app because all the magic happens on a single page. It is in the form of an accordion,
+such that, the user does not need to be taken to a different page to see the results of her actions. This decisions was
+made intentionally to remove the overhead UX problem of navigating to an extra page when it could be display with a better
+visual hierachy on the same page.</p>
+<h3 id="responsiveness">Responsiveness</h3>
+<p>Responsiveness is mobile-first. The styles are implemented mobile-first and subsequent media queries are used to
+tailor it to a larger screen. That way, the breakpoints 300px - 1920px are well-covered.</p>
+<h3 id="no-submit-button">No submit button</h3>
+<p>API requests are debounced while the user is typing their keywords. That way, an extra click is not required by the user to perforn a search action.</p>
+<h2 id="deployment">Deployment</h2>
+<p>The app was deployed to heroku: <a href="https://patrick-ghusers.herokuapp.com">here</a> and can interacted with there.</p>
+<h2 id="end-to-end-tests">End to End tests.</h2>
+<p>End-to-end tests was implemented with puppeteer.</p>
+<h2 id="extra-thoughts">Extra Thoughts</h2>
+<p>The tests produce warnings when ran. It is a known issue in React: <a href="https://github.com/facebook/react/">here</a>issues/14769 and a fix is in alpha and has not been released yet. It is due to the tests interaction/updating the dom.</p>
+<h2 id="available-scripts">Available Scripts</h2>
+<p>In the project directory, you can run:</p>
+<h3 id="npm-start"><code>npm start</code></h3>
+<p>Runs the app in the development mode.<br>
+Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.</p>
+<p>The page will reload if you make edits.<br>
+You will also see any lint errors in the console.</p>
+<h3 id="npm-test"><code>npm test</code></h3>
+<p>Launches the test runner in the interactive watch mode.<br>
+See the section about <a href="https://facebook.github.io/create-react-app/docs/running-tests">running tests</a> for more information.</p>
+
+    </body>
+    </html>

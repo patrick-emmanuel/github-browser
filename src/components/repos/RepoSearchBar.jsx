@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const RepoSearchBar = ({ handleSubmit, name, handleNameChange }) => (
-  <form className="search" onSubmit={handleSubmit} data-testid="search-form">
+const RepoSearchBar = ({ username, handleNameChange }) => (
+  <form className="search" data-testid="search-form">
     <div className="input-group">
       <input
         type="text"
         name="username"
         aria-label="username"
         placeholder="Find a user on Github"
-        value={name}
+        value={username}
         onChange={handleNameChange}
       />
       <i className="fas fa-search fa-lg" />
@@ -18,8 +18,7 @@ const RepoSearchBar = ({ handleSubmit, name, handleNameChange }) => (
 );
 
 RepoSearchBar.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
   handleNameChange: PropTypes.func.isRequired
 };
 

@@ -27,22 +27,6 @@ describe("Repos", () => {
 
     expect(accordion).not.toBeNull();
   }, timeout);
-
-  // it("Should show error with incorrect username", async () => {
-  //   await page.goto(url);
-
-  //   await page.waitForSelector(".repos");
-  //   await page.click(".search>div>input[name=username]");
-  //   await page.type(
-  //     ".search>div>input[name=username]",
-  //     "invalid-username-non-existent"
-  //   );
-  //   await page.waitForSelector(".error");
-
-  //   const error = await page.$(".error");
-
-  //   expect(error).not.toBeNull();
-  // }, timeout);
 });
 
 afterEach(() => {

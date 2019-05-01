@@ -15,13 +15,13 @@
 Responsiveness is mobile-first. The styles are implemented mobile-first and subsequent media queries are tailored to larger screen sizes. That way, the breakpoints 300px - 1920px are well covered.
 
 ### No submit button
-API requests are debounced while the user is typing their keywords. The overhead for an extra click is not required by the user to perforn a search.
+API requests are debounced while the user is typing their keywords. The overhead for an extra click is not required by the user to perform a search.
 
 ## End to End tests.
-End-to-end tests was implemented with puppeteer, and runs on Travis CI.
+End-to-end test was implemented with puppeteer, and runs on Travis CI.
 
 ## Extra Thoughts
-The tests produce warnings when ran. It is a known issue in React: [here](https://github.com/facebook/react/)issues/14769 and a fix is in alpha and has not been released yet. It is due to the tests interaction/updating the dom causing state changes.
+The React tests produce warnings when ran. It is a known issue in React: [here](https://github.com/facebook/react/issues/14769) and a fix is in alpha and has not been released yet. It is due to the tests interaction/updating the dom causing state changes.
 
 ## Available Scripts
 

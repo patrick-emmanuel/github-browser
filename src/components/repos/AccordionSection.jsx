@@ -1,4 +1,5 @@
 import React from "react";
+import { useSpring, animated } from "react-spring";
 import PropTypes from "prop-types";
 
 const AccordionSection = ({
@@ -9,10 +10,16 @@ const AccordionSection = ({
   privateRepo,
   isOpen
 }) => {
-
   const onClick = () => {
     onSectionClick(label);
   };
+  const props = useSpring({
+    from: { opacity: 0, transform: "translate3d(20px,0,0)" },
+    to: {
+      opacity: isOpen ? 1 : 0,
+      transform: `translate3d(${isOpen ? 0 : 20}px,0,0)`
+    }
+  });
 
   return (
     <li>
@@ -46,10 +53,15 @@ const AccordionSection = ({
           </div>
         </div>
       </div>
-      {isOpen && <div className="accordion-section-content">{children}</div>}
+      {isOpen && (
+        <animated.div style={props} className="accordion-section-content">
+          {children}
+        </animated.div>
+      )}
     </li>
   );
 };
+
 
 AccordionSection.propTypes = {
   children: PropTypes.instanceOf(Object).isRequired,

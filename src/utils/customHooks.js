@@ -40,7 +40,7 @@ const dataFetchReducer = (state, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.payload
+        error: formatError(action.payload)
       };
     default:
       throw new Error();
@@ -64,7 +64,7 @@ export const useDataApi = (initialUrl, initialData) => {
           const result = await axios(url);
           dispatch({ type: actions.FETCH_SUCCESS, payload: result.data });
         } catch (error) {
-          dispatch({ type: actions.FETCH_FAILURE, payload: error.message });
+          dispatch({ type: actions.FETCH_FAILURE, payload: error });
         }
       }
     };
@@ -76,4 +76,17 @@ export const useDataApi = (initialUrl, initialData) => {
   };
 
   return { ...state, fetchData };
+};
+
+const formatError = error => {
+  const { status } = error.response;
+  let message = "";
+  if (status === 404) {
+    message = "404 Not found";
+  } else if (status === 403) {
+    message = "Forbidden from performing this action";
+  } else {
+    message = error.message;
+  }
+  return message;
 };

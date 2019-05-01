@@ -4,7 +4,7 @@ import { BASE_URL } from "../../constants";
 import BranchSearchResults from "./BranchSearchResults";
 import { useDataApi } from "../../utils/customHooks";
 
-const UserBranches = ({ repoName, username }) => {
+const Branch = ({ repoName, username }) => {
   const { isLoading, error, data, fetchData } = useDataApi("", null);
 
   useEffect(() => {
@@ -24,9 +24,9 @@ const UserBranches = ({ repoName, username }) => {
   return <section>{render}</section>;
 };
 
-UserBranches.propTypes = {
+Branch.propTypes = {
   repoName: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired
 };
 
-export default UserBranches;
+export default Branch;

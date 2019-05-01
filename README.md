@@ -1,5 +1,7 @@
 # GitHub Browser
 
+[![Build Status](https://travis-ci.org/the-bionic/github-browser.svg?branch=master)](https://travis-ci.org/the-bionic/github-browser)
+
 ## Getting started
 
 ```

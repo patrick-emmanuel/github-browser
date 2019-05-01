@@ -62,11 +62,12 @@ const AccordionSection = ({
   );
 };
 
-
 AccordionSection.propTypes = {
   children: PropTypes.instanceOf(Object).isRequired,
   isOpen: PropTypes.bool.isRequired,
   label: PropTypes.string.isRequired,
-  onSectionClick: PropTypes.func.isRequired
+  onSectionClick: PropTypes.func.isRequired,
+  starsCount: PropTypes.number.isRequired,
+  privateRepo: PropTypes.bool.isRequired
 };
 export default AccordionSection;

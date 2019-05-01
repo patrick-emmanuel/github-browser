@@ -1,8 +1,8 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
+import PropTypes from "prop-types";
 import RepoBranch from "../branch";
 import Accordion from "./Accordion";
-import PropTypes from "prop-types";
 
 const UserRepository = ({ username, repos }) => {
   const props = useSpring({ opacity: 1, from: { opacity: 0 } });
@@ -33,7 +33,8 @@ const UserRepository = ({ username, repos }) => {
 };
 
 UserRepository.propTypes = {
-  match: PropTypes.instanceOf(Object).isRequired
+  username: PropTypes.string.isRequired,
+  repos: PropTypes.array.isRequired
 };
 
 export default UserRepository;

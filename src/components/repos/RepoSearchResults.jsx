@@ -18,7 +18,7 @@ const RepoSearchResults = ({ match }) => {
 
   let render;
   if (isLoading) {
-    render = <Loader className="loader-lg" />;
+    render = <Loader />;
   } else if (!isLoading && !error && data) {
     render = username ? (
       <UserRepository username={username} repos={data} />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import RepoSearchBar from "./RepoSearchBar";
 import { Route } from "react-router-dom";
+import PropTypes from "prop-types";
+import RepoSearchBar from "./RepoSearchBar";
 import RepoSearchResults from "./RepoSearchResults";
 import { useDebounce } from "../../utils/customHooks";
 import Logo from "./Logo";
@@ -27,6 +28,10 @@ const Repo = ({ history }) => {
       <Route path="/:username" component={RepoSearchResults} />
     </section>
   );
+};
+
+Repo.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired
 };
 
 export default Repo;

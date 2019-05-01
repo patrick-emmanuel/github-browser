@@ -79,8 +79,8 @@ export const useDataApi = (initialUrl, initialData) => {
 };
 
 const formatError = error => {
-  const { status } = error.response;
   let message = "";
+  const status = error.response ? error.response.status : "";
   if (status === 404) {
     message = "404 Not found";
   } else if (status === 403) {

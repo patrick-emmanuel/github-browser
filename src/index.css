@@ -25,6 +25,7 @@ body {
 ul {
   list-style-type: none;
   padding-inline-start: 0;
+  word-wrap: break-word;
 }
 @media (min-width: 575.98px) {
   ul {
@@ -175,6 +176,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .repoType {
   padding-left: 0.8rem;
@@ -211,7 +213,7 @@ button {
 .fa-star.blue {
   color: #8cdaff;
 }
-.loader-lg{
+.loader-lg {
   width: 1em;
   height: 1em;
 }

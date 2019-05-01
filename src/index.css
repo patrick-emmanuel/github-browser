@@ -90,7 +90,7 @@ button {
 
 @media (min-width: 575.98px) {
   .repo-results {
-    padding: 2.5rem ;
+    padding: 2.5rem 0;
   }
 }
 

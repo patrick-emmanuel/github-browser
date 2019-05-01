@@ -213,13 +213,11 @@ button {
 .fa-star.blue {
   color: #8cdaff;
 }
-.loader-lg {
-  width: 1em;
-  height: 1em;
-}
 
 .loader {
   font-size: 90px;
+  width: 1em;
+  height: 1em;
   text-indent: -9999em;
   overflow: hidden;
   border-radius: 50%;

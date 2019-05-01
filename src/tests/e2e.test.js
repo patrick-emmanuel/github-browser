@@ -3,7 +3,7 @@ import puppeteer from "puppeteer";
 let browser;
 let page;
 
-const timeout = 600000
+const timeout = 90000
 const url = "http://localhost:3000";
 beforeEach(async () => {
   browser = await puppeteer.launch({

@@ -7,7 +7,7 @@ import Logo from "./Logo";
 
 const Repo = ({ history }) => {
   const [username, setUsername] = useState("");
-  const debouncedName = useDebounce(username, 1000);
+  const debouncedName = useDebounce(username, 600);
 
   const handleNameChange = e => {
     e.preventDefault();

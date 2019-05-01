@@ -18,7 +18,8 @@ const BranchSearchResults = ({ branches, repoName }) => {
 };
 
 BranchSearchResults.propTypes = {
-  branches: PropTypes.array.isRequired
+  branches: PropTypes.array.isRequired,
+  repoName: PropTypes.string.isRequired
 };
 
 export default BranchSearchResults;

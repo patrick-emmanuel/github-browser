@@ -26,7 +26,7 @@ const UserBranches = ({ repoName, username }) => {
 
 UserBranches.propTypes = {
   repoName: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired
 };
 
 export default UserBranches;

@@ -3,7 +3,8 @@ import puppeteer from "puppeteer";
 let browser;
 let page;
 
-const timeout = 90000
+const timeout = 90000;
+
 const url = "http://localhost:3000";
 beforeEach(async () => {
   browser = await puppeteer.launch({
@@ -19,7 +20,7 @@ describe("Repos", () => {
 
     await page.waitForSelector(".repos");
     await page.click(".search>div>input[name=username]");
-    await page.type(".search>div>input[name=username]", "the-bionic");
+    await page.type(".search>div>input[name=username]", "location");
     await page.waitForSelector(".loader");
     await page.waitForSelector(".accordion-wrapper");
 

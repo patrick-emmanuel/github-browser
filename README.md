@@ -11,9 +11,6 @@
 
 ## Design Decisions
 
-### No Router
-The app was not built with routing configured, because all the magic happens on a single page. The app was built with an accordion, such that, the user does not need to be taken to a different page to see the results of their action. This decision was made intentionally to eliminate the overhead UX problem of navigating to an extra page when it could be displayed with a better visual hierachy on the same page.
-
 ### Responsiveness
 Responsiveness is mobile-first. The styles are implemented mobile-first and subsequent media queries are tailored to larger screen sizes. That way, the breakpoints 300px - 1920px are well covered.
 

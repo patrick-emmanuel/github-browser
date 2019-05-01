@@ -3,6 +3,7 @@ import puppeteer from "puppeteer";
 let browser;
 let page;
 
+const timeout = 600000
 const url = "http://localhost:3000";
 beforeEach(async () => {
   browser = await puppeteer.launch({
@@ -10,10 +11,10 @@ beforeEach(async () => {
   });
   // creates a new page in the opened browser
   page = await browser.newPage();
-});
+}, timeout);
 
 describe("Repos", () => {
-  it("Should fetch repo correctly", async () => {
+  it("Should fetch repo correctly when username is typed", async () => {
     await page.goto(url);
 
     await page.waitForSelector(".repos");
@@ -25,7 +26,7 @@ describe("Repos", () => {
     const accordion = await page.$(".accordion-section");
 
     expect(accordion).not.toBeNull();
-  }, 60000);
+  }, timeout);
 
   it("Should show error with incorrect username", async () => {
     await page.goto(url);
@@ -41,7 +42,7 @@ describe("Repos", () => {
     const error = await page.$(".error");
 
     expect(error).not.toBeNull();
-  }, 60000);
+  }, timeout);
 });
 
 afterEach(() => {

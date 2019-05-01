@@ -1,40 +1,38 @@
-import React from "react";
-import { useSpring, animated } from "react-spring";
-import RepoBranch from "../branch";
-import Accordion from "./Accordion";
+import React, { useEffect } from "react";
+import { BASE_URL } from "../../constants";
+import Loader from "../Loader";
 import PropTypes from "prop-types";
+import UserRepository from "./UserRepository";
+import { useDataApi } from "../../utils/customHooks";
+import Error from "../Error";
 
-const RepoSearchResults = ({ repos, username }) => {
-  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
-  return (
-    <animated.div style={props}>
-      <div className="accordion">
-        <h2>{username} repositories</h2>
-        {repos.length > 0 ? (
-          <Accordion>
-            {repos.map(repo => (
-              <div
-                key={repo.name}
-                label={repo.name}
-                description={repo.description}
-                starsCount={repo.stargazers_count}
-                privateRepo={repo.private}
-              >
-                <RepoBranch repoName={repo.name} username={username} />
-              </div>
-            ))}
-          </Accordion>
-        ) : (
-          "This user has no repositories"
-        )}
-      </div>
-    </animated.div>
-  );
+const RepoSearchResults = ({ match }) => {
+  const { isLoading, error, data, fetchData } = useDataApi("", null);
+  const { username } = match.params;
+
+  useEffect(() => {
+    if (username) {
+      fetchData(`${BASE_URL}/users/${username}/repos`);
+    }
+  }, [username, fetchData]);
+
+  let render;
+  if (isLoading) {
+    render = <Loader className="loader-lg" />;
+  } else if (!isLoading && !error && data) {
+    render = username ? (
+      <UserRepository username={username} repos={data} />
+    ) : null;
+  } else if (error) {
+    render = <Error error={error} />;
+  } else {
+    render = null;
+  }
+  return <div className="repo-results">{render}</div>;
 };
 
 RepoSearchResults.propTypes = {
-  repos: PropTypes.array.isRequired,
-  username: PropTypes.string.isRequired
+  match: PropTypes.instanceOf(Object).isRequired
 };
 
 export default RepoSearchResults;

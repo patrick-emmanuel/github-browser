@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import RepoSearchBar from "./RepoSearchBar";
-import { BASE_URL } from "../../constants";
-import { useDebounce, useDataApi } from "../../utils/customHooks";
+import { Route } from "react-router-dom";
 import RepoSearchResults from "./RepoSearchResults";
-import Loader from "../Loader";
+import { useDebounce } from "../../utils/customHooks";
 import Logo from "./Logo";
-import Error from "../Error";
 
-const UserRepo = () => {
+const Repo = ({ history }) => {
   const [username, setUsername] = useState("");
   const debouncedName = useDebounce(username, 1000);
-  const { isLoading, error, data, fetchData } = useDataApi("", null);
 
   const handleNameChange = e => {
     e.preventDefault();
@@ -19,29 +16,17 @@ const UserRepo = () => {
 
   useEffect(() => {
     if (debouncedName) {
-      fetchData(`${BASE_URL}/users/${debouncedName}/repos`);
+      history.push(`/${debouncedName}`);
     }
-  }, [debouncedName, fetchData]);
+  }, [debouncedName, history]);
 
-  let render;
-  if (isLoading) {
-    render = <Loader className="loader-lg" />;
-  } else if (!isLoading && !error && data) {
-    render = debouncedName ? (
-      <RepoSearchResults repos={data} username={debouncedName} />
-    ) : null;
-  } else if (error) {
-    render = <Error error={error} />;
-  } else {
-    render = null;
-  }
   return (
     <section className="repos">
       <Logo />
       <RepoSearchBar username={username} handleNameChange={handleNameChange} />
-      <div className="repo-results">{render}</div>
+      <Route path="/:username" component={RepoSearchResults} />
     </section>
   );
 };
 
-export default UserRepo;
+export default Repo;

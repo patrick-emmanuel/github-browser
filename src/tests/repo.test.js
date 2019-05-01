@@ -59,9 +59,31 @@ describe("Repos", () => {
     it("Should be rendered", () => {
       const { getByTestId } = render(<Repos />);
 
-      const formElement = getByTestId("logo");
+      const logoElement = getByTestId("logo");
 
-      expect(formElement).not.toBeNull();
+      expect(logoElement).not.toBeNull();
+    });
+    it("Should have logo class", () => {
+      const { getByTestId } = render(<Repos />);
+
+      const logoElement = getByTestId("logo");
+
+      expect(logoElement).toHaveClass("logo");
+    });
+    it("Should contain a tag line", () => {
+      const { getByTestId, getByLabelText } = render(<Repos />);
+
+      const logoElement = getByTestId("logo");
+      const logoTagLine = getByLabelText("logo-tagline");
+
+      expect(logoElement).toContainElement(logoTagLine);
+    });
+    it("Should have a tagline 'GitHub Users'", () => {
+      const { getByLabelText } = render(<Repos />);
+
+      const logoTagLine = getByLabelText("logo-tagline");
+
+      expect(logoTagLine).toHaveTextContent("GitHub Users");
     });
   });
 });

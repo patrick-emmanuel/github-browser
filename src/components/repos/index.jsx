@@ -21,13 +21,15 @@ const UserRepo = () => {
     if (debouncedName) {
       fetchData(`${BASE_URL}/users/${debouncedName}/repos`);
     }
-  }, [debouncedName]);
+  }, [debouncedName, fetchData]);
 
   let render;
   if (isLoading) {
     render = <Loader className="loader-lg" />;
   } else if (!isLoading && !error && data) {
-    render = <RepoSearchResults repos={data} username={debouncedName} />;
+    render = debouncedName ? (
+      <RepoSearchResults repos={data} username={debouncedName} />
+    ) : null;
   } else if (error) {
     render = <Error error={error} />;
   } else {

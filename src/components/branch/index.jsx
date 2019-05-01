@@ -9,7 +9,7 @@ const UserBranches = ({ repoName, username }) => {
 
   useEffect(() => {
     fetchData(`${BASE_URL}/repos/${username}/${repoName}/branches`)
-  }, [username, repoName]);
+  }, [username, repoName, fetchData]);
 
   let render;
   if (isLoading) {

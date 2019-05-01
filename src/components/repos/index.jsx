@@ -31,7 +31,7 @@ const Repo = ({ history }) => {
 };
 
 Repo.propTypes = {
-  history: PropTypes.instanceOf(Object).isRequired
+  history: PropTypes.instanceOf(Object)
 };
 
 export default Repo;
